@@ -28,6 +28,14 @@ class TodoListTests(unittest.TestCase):
             todo.delete_task(1)
             self.assertEqual(todo.view_tasks(), ["Walk dog"])
 
+    def test_mark_task_done(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            path = Path(tmpdir) / "tasks.txt"
+            todo = TodoList(path)
+            todo.add_task("Read book")
+            todo.mark_task_done(1)
+            self.assertEqual(todo.view_tasks(), ["[Done] Read book"])
+
     def test_save_and_load_tasks(self):
         with tempfile.TemporaryDirectory() as tmpdir:
             path = Path(tmpdir) / "tasks.txt"

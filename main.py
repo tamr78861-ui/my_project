@@ -16,7 +16,8 @@ def main() -> None:
     print("1. Add task")
     print("2. View tasks")
     print("3. Delete task")
-    print("4. Quit")
+    print("4. Mark task as done")
+    print("5. Quit")
 
     while True:
         choice = input("\nChoose an option: ").strip()
@@ -52,6 +53,24 @@ def main() -> None:
             except IndexError as exc:
                 print(exc)
         elif choice == "4":
+            tasks = todo.view_tasks()
+            if not tasks:
+                print("No tasks to mark as done.")
+                continue
+
+            print("Your tasks:")
+            for i, task in enumerate(tasks, start=1):
+                print(f"{i}. {task}")
+
+            try:
+                number = int(input("Enter the task number to mark as done: "))
+                todo.mark_task_done(number)
+                print("Task marked as done.")
+            except ValueError:
+                print("Please enter a valid number.")
+            except IndexError as exc:
+                print(exc)
+        elif choice == "5":
             print("Goodbye!")
             break
         else:

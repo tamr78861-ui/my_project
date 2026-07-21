@@ -1,3 +1,4 @@
-Buy milk
+[Done] Buy milk
 Walk dog
 Buy milk
+Read book

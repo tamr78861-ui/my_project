@@ -23,6 +23,15 @@ class TodoList:
         else:
             raise IndexError("Task number does not exist")
 
+    def mark_task_done(self, index: int) -> None:
+        if 1 <= index <= len(self.tasks):
+            task = self.tasks[index - 1]
+            if not task.startswith("[Done] "):
+                self.tasks[index - 1] = f"[Done] {task}"
+                self.save_tasks()
+        else:
+            raise IndexError("Task number does not exist")
+
     def save_tasks(self) -> None:
         self.file_path.parent.mkdir(parents=True, exist_ok=True)
         with self.file_path.open("w", encoding="utf-8") as handle:
