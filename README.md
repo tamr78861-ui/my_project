@@ -29,3 +29,4 @@ python main.py
 ## Example
 
 When you run the program, you will see a menu with options such as adding or viewing tasks. The program stores your tasks in a file named `tasks.txt` in the project folder.
+
